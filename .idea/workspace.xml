@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d8b85b92-0a87-4494-8357-dcc45801b065" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/css/mycss.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/img/add.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/img/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/Entities/Categoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/Entities/Categoria.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/js/myjs.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/myjs.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,8 +45,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/home.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
+            <state relative-caret-position="313">
+              <caret line="59" column="70" selection-start-line="59" selection-start-column="70" selection-end-line="59" selection-end-column="70" />
+              <folding>
+                <element signature="e#2413#2420#1#HTML" expanded="true" />
+                <element signature="e#3650#3657#1#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -58,8 +58,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/js/myjs.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+            <state relative-caret-position="34">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -122,6 +122,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -151,7 +152,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -194,17 +194,17 @@
       <workItem from="1550664647349" duration="1492000" />
       <workItem from="1551033251052" duration="3783000" />
       <workItem from="1551037484249" duration="3128000" />
+      <workItem from="1551093451604" duration="1364000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9792000" />
+    <option name="totallyTimeSpent" value="11156000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2595949" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2632375" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -253,8 +253,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/88648af8-3cf3-4c2d-8a69-0a3db2289e34/console.sql" />
+    <entry file="file://$PROJECT_DIR$/web/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/myjs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/css/mycss.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -263,30 +278,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/88648af8-3cf3-4c2d-8a69-0a3db2289e34/console.sql">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/myjs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/home.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="44" selection-start-line="36" selection-start-column="44" selection-end-line="36" selection-end-column="44" />
+        <state relative-caret-position="313">
+          <caret line="59" column="70" selection-start-line="59" selection-start-column="70" selection-end-line="59" selection-end-column="70" />
+          <folding>
+            <element signature="e#2413#2420#1#HTML" expanded="true" />
+            <element signature="e#3650#3657#1#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

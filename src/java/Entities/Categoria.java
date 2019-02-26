@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "CATEGORIA")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Categoria.findAll", query = "SELECT c FROM Categoria c")
+      @NamedQuery(name = "Categoria.findAll", query = "SELECT c FROM Categoria c")
     , @NamedQuery(name = "Categoria.findById", query = "SELECT c FROM Categoria c WHERE c.id = :id")
     , @NamedQuery(name = "Categoria.findByNombre", query = "SELECT c FROM Categoria c WHERE c.nombre = :nombre")})
 public class Categoria implements Serializable {
