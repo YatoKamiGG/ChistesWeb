@@ -6,6 +6,7 @@
 package servlet;
 
 import Entities.Categoria;
+import Entities.Chiste;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -53,14 +54,72 @@ public class Controller extends HttpServlet {
         
         op = request.getParameter("op");
         
-        if(op=="inicio"){
-            sql = "Select c from Categoria";
+        if(op.equals("inicio")){
+            sql = "Select c from Categoria c";
             query = em.createQuery(sql);
             List<Categoria> categorias = query.getResultList();
             session.setAttribute("categorias", categorias);
+            session.setAttribute("Bandera", true);
             
             dispatcher = request.getRequestDispatcher("home.jsp");
             dispatcher.forward(request, response);
+        }else if(op.equals("categoriaselec")){
+            String idCategoria = request.getParameter("idCategoria");
+            sql = "Select c from Chiste c where c.idcategoria.id="+idCategoria;
+            query =em.createQuery(sql);
+            List<Chiste> chistes = query.getResultList();
+            request.setAttribute("chistes",chistes);
+            session.setAttribute("idcate", idCategoria);
+            session.setAttribute("Bandera", true);
+            
+            dispatcher = request.getRequestDispatcher("home.jsp");
+            dispatcher.forward(request, response);
+        }else if(op.equals("catemejores")){
+            boolean bandera = Boolean.parseBoolean( request.getParameter("mejores"));
+            if(bandera){
+                sql = "select p.idchiste from Puntos p group by p.idchiste order by avg(p.puntos) DESC ";
+                query =em.createQuery(sql);
+                List<Chiste> chistes = query.getResultList();
+                request.setAttribute("chistes",chistes);
+                session.setAttribute("Bandera", !bandera);
+            }else{
+                String idCategoria = request.getParameter("idCategoria");
+                sql = "Select c from Chiste c where c.idcategoria.id="+idCategoria;
+                query =em.createQuery(sql);
+                List<Chiste> chistes = query.getResultList();
+                request.setAttribute("chistes",chistes);
+                session.setAttribute("Bandera", !bandera);
+            }
+                dispatcher = request.getRequestDispatcher("home.jsp");
+                dispatcher.forward(request, response);
+        }else if(op.equals("insertarCategorias")){
+                String categoria = request.getParameter("Categoria");
+                Categoria nuevaCategoria = new Categoria();
+                nuevaCategoria.setNombre(categoria);
+                em.getTransaction().begin();
+                em.persist(nuevaCategoria);
+                em.getTransaction().commit();
+                
+                
+                dispatcher = request.getRequestDispatcher("index.html");
+                dispatcher.forward(request, response);
+        }else if(op.equals("insertarChiste")){
+                String apodo = request.getParameter("Apodo");
+                String chiste = request.getParameter("Chiste");
+                String categoria = request.getParameter("Categoria");
+                Categoria categoriaTotal = em.find(Categoria.class, Short.parseShort(categoria));
+                String titulo = request.getParameter("Titulo");
+                Chiste nuevoChiste = new Chiste();
+                nuevoChiste.setAdopo(apodo);
+                nuevoChiste.setIdcategoria(categoriaTotal);
+                nuevoChiste.setTitulo(titulo);
+                nuevoChiste.setDescripcion(chiste);
+                em.getTransaction().begin();
+                em.persist(nuevoChiste);
+                em.getTransaction().commit();
+                
+                dispatcher = request.getRequestDispatcher("index.html");
+                dispatcher.forward(request, response);
         }
     }
 

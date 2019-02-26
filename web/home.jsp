@@ -1,3 +1,7 @@
+<%@page import="Entities.Chiste"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@page import="java.util.List"%>
+<%@page import="Entities.Categoria"%>
 <!doctype html>
 <html lang="es">
 <head>
@@ -11,6 +15,12 @@
 
     <title>Hello, world!</title>
 </head>
+<%
+    List<Categoria> categorias =(List<Categoria>) session.getAttribute("categorias");
+    List<Chiste> chistecillu = (List<Chiste>) request.getAttribute("chistes");
+    String idCategoria =(String) session.getAttribute("idcate");
+    Boolean mejores = (Boolean) session.getAttribute("Bandera");
+    %>
 <body class="container">
 <section class="colorheader">
 <header>
@@ -21,11 +31,24 @@
     <article>
         <div class="form-group row mx-0 colorform">
             <label class="col-sm-1" for="selecto">Categoria:</label>
-            <select onchange="" id="selecto" class="form-control col-sm-6">
-                <option>Default select</option>
+            <select onchange='window.location="Controller?op=categoriaselec&idCategoria="+this.value' id="selectcategoria" class="form-control col-sm-6">
+                    <option value="">Selecciona una opción</option>
+                <%
+                    for(Categoria categoria : categorias){
+                        %>
+                        <option value="<%=categoria.getId()%>"><%= categoria.getNombre()%></option>
+                        <%
+                    }
+                    %>
+                
             </select>
             <button id="triggercate" data-toggle="modal" data-target="#modalcategorias" class="offset-sm-1 col-sm-1 btn btn-link"><img src="img/add.png"></button>
-            <a class="col-sm-2 offset-sm-1" href="#">Mejores chistes</a>
+            <% if(mejores){ %>
+            <a class="col-sm-2 offset-sm-1" href='Controller?op=catemejores&mejores=<%=mejores %>'>Mejores chistes</a>
+            <%}else{ %>
+            <a class="col-sm-2 offset-sm-1" href="Controller?op=catemejores&mejores=false&idCategoria=<%=idCategoria %>"> Por Categoria</a>
+            <% } %>
+
         </div>
     </article>
 </header>
@@ -33,13 +56,22 @@
     <article class="text-center">
         <button id="triggernovochiste" class="btn btn-link" data-toggle="modal" data-target="#modalchistes"><img src="img/add.png"></button>
     </article>
-
-    <section id="chistes" class="row my-sm-2">
-        <div class="col-sm-3"><h2>nombre chiste</h2></div><div class="text-danger col-sm-6"><h4>(Categoria chiste)</h4></div>
-        <div class="col-sm-12"><h4>Nombre Usuario</h4></div>
-        <div class="col-sm-12"><h6>CHISTES JAJAJJAJAJAJAJSJJASDAS SAJD JKASNDJ SADN SAJKDH ASD KASJKD KLASDJJH ASHDJ ASHJNDOPA JSDFASÑDK KLASH DFIÄS^DK LASJP=DK KASMDK MASKKDL ASLKD L</h6></div>
-        <div class="col-sm-2"><input onclick="" value="loco" type="checkbox">Opcion 1</div>
-    </section>
+                    
+                    <% if(chistecillu!=null){
+                        
+                        for(Chiste chiste : chistecillu){%>
+                        <section id="chistes" class="row my-sm-2">
+                            <div class="col-sm-3"><h2><%=chiste.getTitulo()%></h2></div><div class="text-danger col-sm-6"><h4>(<%=chiste.getIdcategoria().getNombre()%>)</h4></div>
+                            <div class="col-sm-12"><h4><%=chiste.getAdopo() %></h4></div>
+                            <div class="col-sm-12"><h6><%=chiste.getDescripcion() %></h6></div>
+                     <div class="col-sm-2"><input onclick="" value="loco" type="checkbox">Opcion 1</div>
+                        </section>
+                   <%
+                       }
+                    }
+                    %>
+                    
+    
 </section>
 
 
@@ -54,7 +86,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="#" method="post">
+                <form action="Controller?op=insertarCategorias" method="post">
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Nueva Categoría</label>
                         <textarea class="form-control" name="Categoria" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -82,7 +114,7 @@
         </button>
       </div>
       <div class="modal-body">
-          <form action="#" method="post">
+          <form action="Controller?op=insertarChiste" method="post">
 
               <!-- Text input-->
               <div class="form-group">
@@ -105,8 +137,14 @@
                   <label class="col-md-4 control-label" for="Categoria">Categoria</label>
                   <div class="col-md-12">
                       <select id="Categoria" name="Categoria" class="form-control">
-                          <option value="1">Option one</option>
-                          <option value="2">Option two</option>
+                        <option selected="">Selecciona una categoria</option>
+                        <%
+                        for(Categoria categoria : categorias){
+                        %>
+                        <option value="<%=categoria.getId()%>"><%= categoria.getNombre()%></option>
+                        <%
+                        }
+                        %>
                       </select>
                   </div>
               </div>
@@ -128,6 +166,14 @@
     </div>
   </div>
 </div>
+
+<% if(idCategoria!=null){ %>
+            <script type="text/javascript">
+                $('#selectcategoria').val('<%= idCategoria %>');
+            </script>
+      <%
+          }
+%>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="js/jquery-3.3.1.min.js"></script>
